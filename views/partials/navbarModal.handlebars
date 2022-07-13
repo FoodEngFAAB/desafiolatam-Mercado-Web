@@ -1,0 +1,45 @@
+<nav class="navbar navbar-expand-lg" style="background-color: #1b811a;">
+    <button id="carrito" type="button" class="btn m-auto" data-toggle="modal" data-target="#modalpdts">
+        <!-- <img src="/img/carrito01.png" class="carrito drop" alt="carrito multicolor"> -->
+        <img src="/img/carrito03.png" class="carrito drop" alt="carrito multicolor">
+    </button>
+</nav>
+
+<h1 class="text-center p-4">Bienvenido al Mercado Web.<br>Seleccione sus productos.</h1>
+
+<!-- Hacer click en carrito conlleva a obtener productos -->
+<script>
+    $('#carrito').click(() => {
+        console.log("Click en carrito") // Control de inicio de función OK
+        let productos = JSON.parse(localStorage.getItem("productos"))
+        let prod = ''
+        productos.forEach(pr => prod += `<div class="producto"> <img width="100" src="/img/${pr}.png" alt="">  </div>`)
+        $('#productos').html(prod)
+        console.log("prod", prod) // Control de productos seleccionados OK, muestra texto HTML para ser entregado al modal
+
+    })
+
+    $('.producto').click(() => {
+        alert()
+        let productos = JSON.parse(localStorage.getItem("productos"))
+        console.log(productos)
+        $(this).attr('src')
+    })
+
+</script>
+
+
+<!-- Modal que muestra productos seleccionados -->
+<div class="modal fade" id="modalpdts" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <script>console.log("En el modal")</script> <!-- Control de entrada del modal OK, pero sólo al cargar la página -->
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div id="productos"></div>
+                <p class="text-center">Productos Seleccionados</p>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+<!-- Navbar visible de la página web -->
+{{> navbarModal }}
+
+<!-- Elementos centrales de la página -->
+{{> principal }}
+
+<script>
+
+    //Al hacer click en el producto se agrega clase tipo "seleccionado"
+    $('.producto').click(function (e) {
+        $(this).addClass('seleccionado')
+        let productos = JSON.parse(localStorage.getItem("productos"))
+        //Determina existencia del producto
+        let exist = productos.find(p => p === this.id)
+        //Caso en que producto no existe y por tanto se agrega
+        if (!exist) {
+            productos.push(this.id)
+            localStorage.setItem('productos', JSON.stringify(productos))
+        }
+    })
+
+    //Deselecciona productos con doble click sobre dicho producto
+    $('.producto').dblclick(function () {
+        $(this).removeClass('seleccionado')
+        let productos = JSON.parse(localStorage.getItem("productos"))
+        productos = productos.filter(p => p !== this.id)
+        localStorage.setItem('productos', JSON.stringify(productos))
+    })
+    
+    //Selecciona productos con click sobre dicho producto
+    let productos = []
+    localStorage.setItem('productos', JSON.stringify(productos))
+
+</script>

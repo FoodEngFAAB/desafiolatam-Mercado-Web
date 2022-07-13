@@ -1,0 +1,12 @@
+<!-- Elementos centrales de la página -->
+<!-- Recorre datos para obtener los productos a cargar en pagina -->
+
+<!-- Separación entre contenedor de productos y NavBar -->
+<div class="container my-5">
+    <div class="row p-1 ">
+        {{#each productos}}
+        <!-- Distribuye productos en la página para ajustarlos a matriz de 3x2 -->
+        <div class="col-4 p-1">{{> Productos producto = this }}</div>
+        {{/each}}
+    </div>
+</div>
